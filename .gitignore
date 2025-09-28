@@ -1,38 +1,38 @@
-# Byte-compiled / optimized / DLL files
+# Ignore Python cache and compiled files
 __pycache__/
 *.py[cod]
 *$py.class
 
-# Virtual environment
+# Ignore virtual environments
+.venv/
 venv/
 ENV/
 env/
-.venv/
 
-# Distribution / packaging
-build/
-dist/
-*.egg-info/
-.eggs/
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
 
-# Logs
-*.log
-
-# IDE / editor files
+# Ignore IDE/editor configs
 .vscode/
 .idea/
 *.swp
-*.swo
-*.bak
 
-# macOS
-.DS_Store
+# Ignore build artifacts
+build/
+dist/
+*.egg-info/
 
-# Windows
-Thumbs.db
-desktop.ini
+# Ignore logs
+*.log
 
-# Kivy / App specific
-*.kv~
-.kivy/
-.kivy_config/
+# Ignore runtime images
+plot.png
+EOTY/Plot image.png
+
+# Ignore MySQL dumps or local DB files
+*.sql
+*.db
+
+# Ignore environment variables (API keys, secrets)
+.env

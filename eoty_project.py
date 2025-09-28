@@ -54,17 +54,23 @@ import matplotlib.pyplot as plt
 import random
 from decimal import Decimal, ROUND_HALF_UP
 import numpy as np
+from dotenv import load_dotenv
+load_dotenv()
 #################################################################################################################################
 # Initial database set-up + connection
-my_db = mysql.connector.connect( 
-    host = 'localhost', 
-    user = 'root', 
-    password = 'mysql', 
-    database = 'simplystock'
+MYSQL_USER = os.getenv("MYSQL_USER", "root")
+MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD", "mysql")
+MYSQL_HOST = os.getenv("MYSQL_HOST", "localhost")
+MYSQL_DATABASE = os.getenv("MYSQL_DATABASE", "simplystock")
+
+my_db = mysql.connector.connect(
+host=MYSQL_HOST,
+user=MYSQL_USER,
+password=MYSQL_PASSWORD,
+database=MYSQL_DATABASE
 )
 
-user=''
-passwrd=''
+
 mycursor = my_db.cursor()
 #################################################################################################################################
 # Initialise money rounding to avoid crash
@@ -77,11 +83,18 @@ Config.set('kivy', 'keyboard_mode', 'systemanddock')
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 TICKER_FILE = os.path.join(BASE_DIR, "ticker.csv")
 PLOT_PATH = os.path.join(BASE_DIR, "plot.png")
-    
-API_KEY = "d3cn6m9r01qmnfgefkggd3cn6m9r01qmnfgefkh0"
+
+API_KEY = os.getenv("FINNHUB_API_KEY", "")
+
+
+STOCK_CACHE = {}
+
 
 def get_price_safe(symbol):
     try:
+        if not API_KEY:
+            print("⚠️ Warning: FINNHUB_API_KEY not set.")
+            return 0.0, 0.0
         url = f"https://finnhub.io/api/v1/quote?symbol={symbol}&token={API_KEY}"
         r = requests.get(url, timeout=6)
         data = r.json() if r.ok else {}
@@ -91,7 +104,6 @@ def get_price_safe(symbol):
     except Exception:
         return 0.0, 0.0
 
-STOCK_CACHE = {}
 
 def get_price_cached(symbol, ttl=60):
     now = time.time()
@@ -102,7 +114,7 @@ def get_price_cached(symbol, ttl=60):
     cur, prev = get_price_safe(symbol)
     STOCK_CACHE[symbol] = (cur, prev, now)
     return cur, prev
-
+    
 def set_balance_label(screen, text):
     for candidate in ("balancebutton6", "balance", "balance_label"):
         if candidate in screen.ids:
