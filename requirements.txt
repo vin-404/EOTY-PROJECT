@@ -1,0 +1,10 @@
+pandas
+kivy
+kivymd
+requests
+yfinance
+mysql-connector-python
+matplotlib
+numpy
+pillow
+requests

@@ -1,0 +1,829 @@
+WindowManager:
+    id: manager
+    name: 'manager'
+    LoginWindow:
+    SignWindow:
+    HomeWindow:
+    TradeWindow:
+    TransactionWindow:
+    BuyWindow:
+<CustomWidget>:
+    text:"title"
+    
+<LoginWindow>:
+    name: 'login'  
+
+    Image:
+        source: 'simplystocklogo.png' 
+        pos_hint: {'center_x': 0.215, 'center_y': 0.9}
+        text_align: 'left'
+        size_hint: .4, .4
+        on_touch_down: app.root.current = 'login'
+
+    MDLabel:
+        text: 'Welcome back!'
+        font_size: 48
+        bold: True
+        theme_text_color: "Custom"
+        text_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+        pos_hint: {'center_x': 0.5, 'center_y': 0.7}
+        halign: 'center'
+
+    # USERNAME
+    MDTextField:
+        mode: 'rectangle'
+        fill_color: 0.4156862745098039, 0.5529411764705882, 0.5725490196078431, 1
+        id: user
+        hint_text: 'User ID'
+        icon_right: 'account'
+        multiline: False
+        size_hint_x: .3
+        font_size: 20 
+        pos_hint: {'center_x': 0.5, 'center_y': 0.6}
+
+    # PASSWORD
+    MDTextField:
+        mode: 'rectangle'
+        fill_color: 0.4156862745098039, 0.5529411764705882, 0.5725490196078431, 1
+        id: password
+        hint_text: 'Password'
+        icon_right: "eye-off"
+        multiline: False
+        size_hint_x: .3
+        font_size: 20
+        password: True
+        pos_hint: {'center_x': 0.5, 'center_y' : 0.45}
+
+    MDRectangleFlatButton:
+        style: 'fill'
+        md_bg_color: 0.996078431372549, 0.3725490196078431, 0.3333333333333333, 1
+        text: 'LOGIN'
+        font_size: 32
+        text_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+        size_hint_x: .3
+        pos_hint: {'center_x': 0.5, 'center_y' : 0.3}
+        on_release: root.DoLogin(user.text, password.text) 
+    MDLabel:
+        id: loginlabel
+        text: 
+        font_size: 24
+        pos_hint: {'center_x': 0.85, 'center_y': 0.1}
+        theme_text_color: "Custom"
+        text_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+
+    MDTextButton:
+        style: "text"
+        theme_text_color: "Custom"
+        text_color: "blue"
+        pos_hint: {'center_x' : 0.5, 'center_y' : 0.22}
+        on_press: app.root.current = 'sign'
+        text: 'Create an account here'
+        font_size: 20
+
+
+<SignWindow>:
+    name: 'sign' 
+
+    Image:
+        source: 'simplystocklogo.png' 
+        pos_hint: {'center_x': 0.215, 'center_y': 0.9}
+        text_align: 'left'
+        size_hint: .4, .4
+        on_touch_down: app.root.current = 'login'
+
+    MDFillRoundFlatIconButton:
+        md_bg_color: 0.996078431372549, 0.3725490196078431, 0.3333333333333333, 1
+        text: 'LOGIN'
+        icon: 'login'
+        bold: True
+        font_size: 20
+        text_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+        text_color: 1, 1, 1, 1
+        pos_hint: {'center_x': 0.9, 'center_y': 0.9}
+        on_press: app.root.current = 'login'
+
+    MDLabel:
+        id: signuplabel
+        text: 
+        font_size: 24
+        pos_hint: {'center_x': 0.55, 'center_y': 0.1}
+        theme_text_color: "Custom"
+        text_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+    MDLabel:
+        text: 'Join Us!'
+        font_size: 48
+        bold: True
+        theme_text_color: "Custom"
+        text_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+        pos_hint: {'center_x': 0.12, 'center_y': 0.75}
+        halign: 'center'
+
+    MDTextField:
+        mode: 'rectangle'
+        fill_color: 0.4156862745098039, 0.5529411764705882, 0.5725490196078431, 1
+        id: firstname
+        hint_text: 'First Name'
+        helper_text_mode: "on_error"
+        icon_right: 'card-account-details'
+        multiline: False
+        size_hint_x: .3
+        font_size: 20 
+        pos_hint: {'center_x': 0.2, 'center_y': 0.625}
+    
+    MDTextField:
+        mode: 'rectangle'
+        fill_color: 0.4156862745098039, 0.5529411764705882, 0.5725490196078431, 1
+        id: lastname
+        hint_text: 'Last Name'
+        helper_text_mode: "on_error"
+        icon_right: 'card-account-details'
+        multiline: False
+        size_hint_x: .3
+        font_size: 20 
+        pos_hint: {'center_x': 0.55, 'center_y': 0.625}
+
+    # USERNAME
+    MDTextField:
+        mode: 'rectangle'
+        fill_color: 0.4156862745098039, 0.5529411764705882, 0.5725490196078431, 1
+        id: user
+        hint_text: 'User ID'
+        helper_text_mode: "on_error"
+        icon_right: 'account'
+        multiline: False
+        size_hint_x: .3
+        font_size: 20 
+        pos_hint: {'center_x': 0.2, 'center_y': 0.475}
+
+    # PASSWORD
+    MDTextField:
+        mode: 'rectangle'
+        fill_color: 0.4156862745098039, 0.5529411764705882, 0.5725490196078431, 1
+        id: password
+        hint_text: 'Password'
+        helper_text_mode: "on_error"
+        icon_right: "eye-off"
+        multiline: False
+        size_hint_x: .3
+        font_size: 20
+        password: True
+        pos_hint: {'center_x': 0.55, 'center_y': 0.475}
+
+    MDTextField:
+        mode: 'rectangle'
+        fill_color: 0.4156862745098039, 0.5529411764705882, 0.5725490196078431, 1
+        id: phone
+        input_filter: 'int'
+        hint_text: 'Phone Number'
+        helper_text_mode: "on_error"
+        icon_right: 'pound'
+        multiline: False
+        max_text_length: 10
+        min_text_length: 10
+        size_hint_x: .3
+        font_size: 20 
+        pos_hint: {'center_x': 0.2, 'center_y': 0.325}
+
+    MDTextField:
+        mode: 'rectangle'
+        fill_color: 0.4156862745098039, 0.5529411764705882, 0.5725490196078431, 1
+        id: aadhar
+        input_filter: 'int'
+        hint_text: 'Aadhar Number'
+        helper_text_mode: "on_error"
+        icon_right: 'card-bulleted'
+        multiline: False
+        max_text_length: 12
+        size_hint_x: .3
+        font_size: 20 
+        pos_hint: {'center_x': 0.55, 'center_y': 0.325}
+    
+    MDRectangleFlatButton:
+        style: 'fill'
+        md_bg_color: 0.996078431372549, 0.3725490196078431, 0.3333333333333333, 1
+        text: 'SIGNUP'
+        font_size: 32
+        text_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+        size_hint_x: .3
+        pos_hint: {'center_x': 0.2, 'center_y' : 0.175}
+        on_release: root.DoSignUp(user.text, password.text, firstname.text, lastname.text, phone.text, aadhar.text) 
+
+<HomeWindow>:
+    name: 'homewin'
+    id: homewin
+    on_pre_enter: root.DoBalance(); root.fillbuttons(); root.add_datatable()
+
+    BoxLayout:
+        orientation: 'vertical'
+
+        MDBottomNavigation:
+            selected_color_background: 0.996078431372549, 0.3725490196078431, 0.3333333333333333, 1
+            text_color_active: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+            text_color_normal: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+            panel_color: 119/255, 136/255, 153/255, 1
+            id: btm_tab
+            MDBottomNavigationItem:
+                name: 'home'
+                text: 'Home'
+                theme_text_color: "Custom"
+                icon: 'home'
+                on_tab_release: app.root.current = 'homewin'
+                
+                Image:
+                    source: 'simplystocklogo.png'
+                    pos_hint: {'center_x': 0.215, 'center_y': 0.9}
+                    text_align: 'left'
+                    size_hint: .4, .4
+                    on_touch_down: app.root.current = 'homewin'
+                
+                MDFillRoundFlatIconButton:
+                    id: balancebutton
+                    md_bg_color: 0.996078431372549, 0.3725490196078431, 0.3333333333333333, 1
+                    text: ''
+                    icon: 'currency-usd'
+                    bold: True
+                    font_size: 20
+                    text_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+                    icon_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+                    pos_hint: {'center_x': 0.7, 'center_y': 0.9}
+                    on_press: app.root.current = 'trans'
+
+                MDFillRoundFlatIconButton:
+                    md_bg_color: 0.996078431372549, 0.3725490196078431, 0.3333333333333333, 1
+                    text: 'LOGOUT'
+                    icon: 'logout'
+                    bold: True
+                    font_size: 15
+                    text_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+                    icon_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+                    pos_hint: {'center_x': 0.9, 'center_y': 0.9}
+                    on_press: app.root.current = 'login'
+
+                MDLabel:
+                    text: 'Explore stocks like Apple, ' 
+                    font_size: 48
+                    bold: True
+                    theme_text_color: "Custom"
+                    text_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+                    pos_hint: {'center_x': 0.55, 'center_y': 0.7} 
+
+                MDLabel:
+                    text: 'Bitcoin and GameStop' 
+                    font_size: 48
+                    bold: True
+                    theme_text_color: "Custom"
+                    text_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+                    pos_hint: {'center_x': 0.55, 'center_y': 0.6} 
+                
+                MDLabel:
+                    text: 'Simply and securely buy, sell, and manage ' 
+                    font_size: 32
+                    theme_text_color: "Custom"
+                    text_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+                    pos_hint: {'center_x': 0.55, 'center_y': 0.45} 
+                
+                MDLabel:
+                    text: 'hundreds of stocks.' 
+                    font_size: 32
+                    theme_text_color: "Custom"
+                    text_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+                    pos_hint: {'center_x': 0.55, 'center_y': 0.35} 
+                
+                MDFillRoundFlatButton:
+                    text: 'See more Stocks!'
+                    font_size: 20
+                    style: 'elevated'
+                    elevation: 4
+                    bold: True
+                    theme_text_color: "Custom"
+                    text_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+                    custom_color: 0.996078431372549, 0.3725490196078431, 0.3333333333333333, 1
+                    pos_hint: {'center_x': 0.13, 'center_y': 0.2}
+                    on_press: root.SwitchTab()
+
+                MDCard:
+                    style: 'elevated'
+                    ripple_behavior: True
+                    pos_hint: {"center_x": 0.725, "center_y": 0.6}
+                    theme_bg_color: "Custom"
+                    md_bg_color: 0.996078431372549, 0.3725490196078431, 0.3333333333333333, 1
+                    size_hint_x: 0.145
+                    size_hint_y: 0.3
+                    theme_shadow_softness: "Custom"
+                    shadow_softness: 3
+                    theme_elevation_level: "Custom"
+                    elevation_level: 3
+                    icon: 'magnify'
+                    on_press: root.buybtc()
+                    MDRelativeLayout:
+                        MDLabel:
+                            text: 'Bitcoin'
+                            font_size: 20
+                            bold: True
+                            pos_hint: {"center_x": 0.6, "center_y": 0.85}
+                            theme_text_color: "Custom"
+                            text_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+                        MDIconButton:
+                            id: b1
+                            icon: 'magnify'
+                            theme_icon_color: 'Custom'
+                            icon_color: 'black'
+                        MDLabel:
+                            id:l1
+                            font_size:20
+                            pos_hint: {"center_x": 0.7, "center_y": 0.5}
+                MDCard:
+                    style: 'elevated'
+                    ripple_behavior: True
+                    pos_hint: {"center_x": 0.9, "center_y": 0.6}
+                    theme_bg_color: "Custom"
+                    md_bg_color: 0.996078431372549, 0.3725490196078431, 0.3333333333333333, 1
+                    size_hint_x: 0.145
+                    size_hint_y: 0.3
+                    theme_shadow_softness: "Custom"
+                    shadow_softness: 3
+                    theme_elevation_level: "Custom"
+                    elevation_level: 3
+                    on_press: root.buyamzn()
+                    MDRelativeLayout:
+                        MDLabel:
+                            text: 'Amazon'
+                            font_size: 20
+                            bold: True
+                            pos_hint: {"center_x": 0.6, "center_y": 0.85}
+                            theme_text_color: "Custom"
+                            text_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+
+                        MDIconButton:
+                            id: b2
+                            icon: 'magnify'
+                            theme_icon_color: 'Custom'
+                            icon_color: 'black'
+                        MDLabel:
+                            id:l2
+                            font_size:20
+                            pos_hint: {"center_x": 0.7, "center_y": 0.5}
+
+                MDCard:
+                    style: 'elevated'
+                    ripple_behavior: True
+                    pos_hint: {"center_x": 0.725, "center_y": 0.25}
+                    theme_bg_color: "Custom"
+                    md_bg_color: 0.996078431372549, 0.3725490196078431, 0.3333333333333333, 1
+                    size_hint_x: 0.145
+                    size_hint_y: 0.3
+                    theme_shadow_softness: "Custom"
+                    shadow_softness: 3
+                    theme_elevation_level: "Custom"
+                    elevation_level: 3
+                    on_press: root.buygme()
+                    MDRelativeLayout:
+                        MDLabel:
+                            text: 'GameStop'
+                            font_size: 20
+                            bold: True
+                            pos_hint: {"center_x": 0.6, "center_y": 0.85}
+                            theme_text_color: "Custom"
+                            text_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+
+                        MDIconButton:
+                            id: b3
+                            icon: 'magnify'
+                            theme_icon_color: 'Custom'
+                            icon_color: 'black'
+                        MDLabel:
+                            id:l3
+                            font_size:20
+                            pos_hint: {"center_x": 0.7, "center_y": 0.5}
+
+                MDCard:
+                    style: 'elevated'
+                    ripple_behavior: True
+                    pos_hint: {"center_x": 0.9, "center_y": 0.25}
+                    theme_bg_color: "Custom"
+                    md_bg_color: 0.996078431372549, 0.3725490196078431, 0.3333333333333333, 1
+                    size_hint_x: 0.145
+                    size_hint_y: 0.3
+                    theme_shadow_softness: "Custom"
+                    shadow_softness: 3
+                    theme_elevation_level: "Custom"
+                    elevation_level: 3
+                    on_press: root.buyapl()
+                    MDRelativeLayout:
+                        MDLabel:
+                            text: 'Apple'
+                            font_size: 20
+                            bold: True
+                            pos_hint: {"center_x": 0.6, "center_y": 0.85}
+                            theme_text_color: "Custom"
+                            text_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+
+                        MDIconButton:
+                            id: b4
+                            md_bg_color: 0.996078431372549, 0.3725490196078431, 0.3333333333333333, 1
+                            icon: 'magnify'
+                            theme_icon_color: 'Custom'
+                            icon_color: 'black'
+                        MDLabel:
+                            id:l4
+                            font_size:20
+                            pos_hint: {"center_x": 0.7, "center_y": 0.5}
+
+            # PORTFOLIO
+            MDBottomNavigationItem:
+                name: 'portfolio'
+                text: 'Portfolio'
+                theme_text_color: "Custom"
+                icon: 'file-document'
+                on_tab_press: root.add_datatable()
+                size_hint_y: 1
+                size_hint_x: 1
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                Image:
+                    source: 'simplystocklogo.png'
+                    pos_hint: {'center_x': 0.215, 'center_y': 0.9}
+                    text_align: 'left'
+                    size_hint: .4, .4
+                    on_touch_down: app.root.current = 'homewin'  
+                
+                MDFillRoundFlatIconButton:
+                    id: balancebuttonp
+                    md_bg_color: 0.996078431372549, 0.3725490196078431, 0.3333333333333333, 1
+                    text: ''
+                    icon: 'currency-usd'
+                    bold: True
+                    font_size: 20
+                    text_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+                    icon_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+                    pos_hint: {'center_x': 0.85, 'center_y': 0.9}
+                    on_press: app.root.current = 'trans'
+
+                BoxLayout:    
+                    id: ancl 
+                    #size_hint_x:1
+                    size_hint_y:1
+                    adaptive_width:True
+                    pos_hint: {'center_x':0.5,"center_y":0.5}
+
+            #TRADING
+            MDBottomNavigationItem:
+                name: 'trading'
+                text: 'Trading'
+                on_tab_press: root.add_datatable1('@')
+                theme_text_color: "Custom"
+                icon: 'finance'
+                size_hint_y: None
+
+                Image:
+                    source: 'simplystocklogo.png'
+                    pos_hint: {'center_x': 0.215, 'center_y': 0.9}
+                    text_align: 'left'
+                    size_hint: .4, .4
+                    on_touch_down: app.root.current = 'homewin'
+                
+                MDFillRoundFlatIconButton:
+                    id: balancebuttont
+                    md_bg_color: 0.996078431372549, 0.3725490196078431, 0.3333333333333333, 1
+                    text: ''
+                    icon: 'currency-usd'
+                    bold: True
+                    font_size: 20
+                    text_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+                    icon_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+                    pos_hint: {'center_x': 0.85, 'center_y': 0.9}
+                    on_press: app.root.current = 'trans'
+
+                MDLabel:
+                    text: 'Purchase Stock!'
+                    bold: True
+                    font_size: 20
+                    pos_hint: {'center_x' : 0.3, 'center_y' : 0.75}
+
+                MDTextField:
+                    mode: 'rectangle'
+                    id: stock
+                    hint_text: 'Enter Stock Name'
+                    pos_hint: {'center_x' : 0.44, 'center_y' : 0.71}
+                    size_hint_x: 0.8
+                    size_hint_y: 0.14
+                
+                MDRaisedButton:
+                    text: 'SEARCH'
+                    theme_text_color: 'Custom'
+                    text_color: 'black'
+                    font_size: 18
+                    icon: "plus-box"
+                    pos_hint: {'center_x': 0.92, 'center_y': 0.7}
+                    on_release: root.add_datatable1(stock.text)
+
+                BoxLayout:    
+                    id: ancl1 
+                    size_hint_x:1
+                    size_hint_y:1
+                    pos_hint: {'center_x':0.5,"center_y":0.5}
+<TradeWindow>:
+    name:'tradewin'
+    on_pre_enter: root.graph(), root.DoBalance() 
+
+    Image:
+        source: 'simplystocklogo.png'
+        pos_hint: {'center_x': 0.215, 'center_y': 0.9}
+        text_align: 'left'
+        size_hint: .4, .4
+        on_touch_down: app.root.current = 'homewin'
+
+    MDIconButton:
+        icon: 'arrow-left'
+        on_press: app.root.current = 'homewin'
+        pos_hint: {'center_x' : 0.04, 'center_y' : 0.75}
+
+    MDTextButton:
+        text: 'Return home'
+        font_size: 28
+        bold: True
+        pos_hint: {'center_x': 0.13, 'center_y': 0.75}
+        theme_text_color: "Custom"
+        text_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+        on_press: app.root.current = 'homewin'
+
+    MDFillRoundFlatIconButton:
+        id: balancebutton1
+        md_bg_color: 0.996078431372549, 0.3725490196078431, 0.3333333333333333, 1
+        text: ''
+        icon: 'currency-usd'
+        bold: True
+        font_size: 20
+        text_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+        icon_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+        pos_hint: {'center_x': 0.85, 'center_y': 0.9}
+        on_press: app.root.current = 'trans'
+
+    Image:
+        id: tradewingraph
+        source: 'plot.png'
+        pos_hint: {'center_x': 0.75, 'center_y': 0.35}
+        size_hint_x: 0.4
+        size_hint_y: 0.55
+        on_touch_down: app.root.current = 'homewin'
+    
+    MDLabel:
+        id: sname
+        text: 
+        font_size: 48
+        bold: True
+        pos_hint: {'center_x': 0.55, 'center_y': 0.65}
+        theme_text_color: "Custom"
+        text_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+
+    MDLabel:
+        id: shares
+        text: 
+        font_size: 32
+        pos_hint: {'center_x': 0.55, 'center_y': 0.55}
+        theme_text_color: "Custom"
+        text_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+
+    MDLabel:
+        id: curmoney
+        text: 
+        font_size: 32
+        pos_hint: {'center_x': 0.55, 'center_y': 0.45}
+        theme_text_color: "Custom"
+        text_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+
+    MDLabel:
+        id: profitmoney
+        text: 
+        font_size: 32
+        pos_hint: {'center_x': 0.55, 'center_y': 0.35}
+        theme_text_color: "Custom"
+        text_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+    
+    MDLabel:
+        id: profpercentage
+        text: 
+        font_size: 32
+        pos_hint: {'center_x': 0.55, 'center_y': 0.25}
+        theme_text_color: "Custom"
+        text_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+
+    MDTextField:
+        mode: 'rectangle'
+        fill_color: 0.4156862745098039, 0.5529411764705882, 0.5725490196078431, 1
+        id: sellamt
+        hint_text: 'Number of Shares to Sell'
+        multiline: False
+        size_hint_x: 0.25
+        font_size: 20 
+        pos_hint: {'center_x': 0.17, 'center_y': 0.13}
+
+    MDRaisedButton:
+        text: 'SELL'
+        font_size: 20
+        icon_left: 'bank'
+        pos_hint: {'center_x': 0.4, 'center_y': 0.12}
+        size_hint_x: 0.1
+        size_hint_y: 0.1
+        text_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+        icon_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+        md_bg_color: 0.996078431372549, 0.3725490196078431, 0.3333333333333333, 1
+        on_press: root.DoSell(sellamt.text)
+
+    MDLabel:
+        id: selllabel
+        text: 
+        font_size: 32
+        pos_hint: {'center_x': 0.55, 'center_y': 0.1}
+        theme_text_color: "Custom"
+        text_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+
+<TransactionWindow>:
+    name: 'trans'
+    on_pre_enter: root.DoBalance() 
+
+    Image:
+        source: 'simplystocklogo.png'
+        pos_hint: {'center_x': 0.215, 'center_y': 0.9}
+        text_align: 'left'
+        size_hint: .4, .4
+        on_touch_down: app.root.current = 'homewin'
+
+    MDFillRoundFlatIconButton:
+        id: balancebutton2
+        md_bg_color: 0.996078431372549, 0.3725490196078431, 0.3333333333333333, 1
+        text: ''
+        icon: 'currency-usd'
+        bold: True
+        font_size: 20
+        text_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+        icon_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+        pos_hint: {'center_x': 0.85, 'center_y': 0.9}
+        on_press: app.root.current = 'trans'
+    MDLabel:
+        text: 'Add balance to your account'
+        font_size: 48
+        bold: True
+        theme_text_color: "Custom"
+        text_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+        pos_hint: {'center_x': 0.6, 'center_y': 0.75}
+
+    MDTextField:
+        mode: 'rectangle'
+        id: credit
+        fill_color: 0.4156862745098039, 0.5529411764705882, 0.5725490196078431, 1
+        hint_text: 'Credit Card Number'
+        helper_text_mode: "on_error"
+        icon_right: 'credit-card'
+        multiline: False
+        max_text_length: 16
+        size_hint_x: .5
+        font_size: 20 
+        pos_hint: {'center_x': 0.35, 'center_y': 0.6}
+
+    MDTextField:
+        mode: 'rectangle'
+        id: cvv
+        fill_color: 0.4156862745098039, 0.5529411764705882, 0.5725490196078431, 1
+        hint_text: 'CVV'
+        helper_text_mode: "on_error"
+        icon_right: 'pound'
+        multiline: False
+        max_text_length: 3
+        size_hint_x: .25
+        font_size: 20 
+        pos_hint: {'center_x': 0.75, 'center_y': 0.6}
+
+    MDTextField:
+        mode: 'rectangle'
+        id: expirydate
+        fill_color: 0.4156862745098039, 0.5529411764705882, 0.5725490196078431, 1
+        hint_text: 'Expiry Date'
+        helper_text_mode: "on_error"
+        icon_right: 'calendar-range'
+        multiline: False
+        max_text_length: 5
+        size_hint_x: .3
+        font_size: 20 
+        pos_hint: {'center_x': 0.25, 'center_y': 0.45}
+
+    MDTextField:
+        mode: 'rectangle'
+        id: bal
+        fill_color: 0.4156862745098039, 0.5529411764705882, 0.5725490196078431, 1
+        hint_text: 'Amount to be credited'
+        helper_text_mode: "on_error"
+        icon_right: 'currency-usd'
+        multiline: False
+        size_hint_x: .3
+        font_size: 20 
+        pos_hint: {'center_x': 0.575, 'center_y': 0.45}
+
+    MDRaisedButton:
+        mode: 'filled'
+        text: 'BUY'
+        md_bg_color: 0.996078431372549, 0.3725490196078431, 0.3333333333333333, 1
+        font_size: 18
+        icon_right: "plus-box"
+        theme_text_color: "Custom"
+        text_color: "white"
+        theme_icon_color: "Custom"
+        icon_color: "white"
+        size_hint_x: 0.125
+        size_hint_y: 0.1
+        pos_hint: {'center_x': 0.81, 'center_y': 0.44}
+        on_press: root.GetBalance(bal.text)
+
+
+
+<BuyWindow>:
+    name:'buywin'
+    on_pre_enter: root.graph(), root.DoBalance() 
+
+    Image:
+        source: 'simplystocklogo.png'
+        pos_hint: {'center_x': 0.215, 'center_y': 0.9}
+        text_align: 'left'
+        size_hint: .4, .4
+        on_touch_down: app.root.current = 'homewin'
+
+    MDIconButton:
+        icon: 'arrow-left'
+        on_press: app.root.current = 'homewin'
+        pos_hint: {'center_x' : 0.04, 'center_y' : 0.75}
+
+    MDTextButton:
+        text: 'Return home'
+        font_size: 28
+        bold: True
+        pos_hint: {'center_x': 0.13, 'center_y': 0.75}
+        theme_text_color: "Custom"
+        text_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+        on_press: app.root.current = 'homewin'
+        
+    MDFillRoundFlatIconButton:
+        id: balancebutton6
+        md_bg_color: 0.996078431372549, 0.3725490196078431, 0.3333333333333333, 1
+        text: ''
+        icon: 'currency-usd'
+        bold: True
+        font_size: 20
+        text_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+        icon_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+        pos_hint: {'center_x': 0.85, 'center_y': 0.9}
+        on_press: app.root.current = 'trans'
+
+    Image:
+        id: tradewingraph
+        source: 'plot.png'
+        pos_hint: {'center_x': 0.75, 'center_y': 0.4}
+        size_hint_x: 0.5
+        size_hint_y: 0.6
+        on_touch_down: app.root.current = 'homewin'
+    
+    MDLabel:
+        id: bsname
+        text: ''
+        font_size: 36
+        bold: True
+        pos_hint: {'center_x': 0.525, 'center_y': 0.65}
+        theme_text_color: "Custom"
+        text_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+
+    MDLabel:
+        id: bcursvalue
+        text: ''
+        font_size: 32
+        bold: True
+        pos_hint: {'center_x': 0.525, 'center_y': 0.55}
+        theme_text_color: "Custom"
+        text_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+    
+    MDTextField:
+        mode: 'rectangle'
+        fill_color: 0.4156862745098039, 0.5529411764705882, 0.5725490196078431, 1
+        id: buyamt
+        hint_text: 'Number of Shares'
+        multiline: False
+        size_hint_x: 0.22
+        font_size: 20 
+        pos_hint: {'center_x': 0.14, 'center_y': 0.23}
+
+    MDRaisedButton:
+        text: 'BUY'
+        font_size: 20
+        icon_left: 'bank'
+        pos_hint: {'center_x': 0.325, 'center_y': 0.22}
+        size_hint_x: 0.1
+        size_hint_y: 0.1
+        text_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+        icon_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
+        md_bg_color: 0.996078431372549, 0.3725490196078431, 0.3333333333333333, 1
+        on_press: root.buystock(buyamt.text)
+    MDLabel:
+        id: buylabel
+        text: 
+        font_size: 32
+        bold: True
+        pos_hint: {'center_x': 0.525, 'center_y': 0.1}
+        theme_text_color: "Custom"
+        text_color: 0.1803921568627451, 0.192156862745098, 0.203921568627451, 1
