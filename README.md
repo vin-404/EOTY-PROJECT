@@ -107,6 +107,6 @@ Follow these steps to set up the project on your system:
 
 - **Vidyut Chandrasekar**
   - [GitHub](https://github.com/XNightrider772X)
-  - [LinkedIn](https://www.linkedin.com/)
+  - [LinkedIn](https://www.linkedin.com/in/vidyut-chandrasekar-482926387/)
 
 ---
